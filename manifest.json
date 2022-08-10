@@ -1,0 +1,30 @@
+{
+  "name": "TODO USSS",
+  "short_name": "USSS TODO",
+  "description": "this is spartaaa!",
+  "theme_color": "#faed27",
+  "background_color": "#807efc",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "./",
+  "start_url": "index.php",
+  "display":"standalone",
+  "lang": "es-CO",
+  "icons": [
+    {
+      "src": "./images/icon/icon192.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/icon/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/icon/icon840.jpg",
+      "sizes": "840x592",
+      "type": "image/png"
+    }
+  ]
+}
