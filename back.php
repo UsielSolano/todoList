@@ -10,6 +10,3 @@ file_put_contents($ruta, strval($datos["tareas"]));
 echo 'se guardo correctamente ';
 
 
-
-
-
