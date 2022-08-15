@@ -3,7 +3,6 @@ const enter = document.getElementById('enter');
 const container__todo = document.querySelector('.container__todo');
 let tareas = {
 }
-
 /**
  * Evento para escuchar el click 
  */
@@ -11,18 +10,16 @@ enter.addEventListener('click', (e) => {
     createElement(tarea.value);
     tarea.value = "";
 })
- /**
-  * Evento para escuchar el boton de enter
-  */
+/**
+ * Evento para escuchar el boton de enter
+ */
 tarea.addEventListener('keypress', (e) => {
     if (e.key == 'Enter') {
         createElement(tarea.value)
         tarea.value = "";
     }
 })
-
 /**
- * 
  * @param {*} idTarea 
  * @param {*} tarea 
  * @param {*} isDelete 
@@ -42,18 +39,24 @@ function saveLS(idTarea, tarea, isDelete) {
  * this function save data in local storage and  create element too
  */
 async function extraerLS() {
+    //notification alow to user know if there is data in local storage
+    Notification.requestPermission().then(function (result) {
+        console.log('Usiel solano', result);
+       
+    });
+    //get data from local storage
     tareas = JSON.parse(window.localStorage.getItem('Tareas'));
     if (!tareas) {
         tareas = {};
     }
     Object.entries(tareas).forEach(([idTarea, tarea]) => {
         createElement(tarea, idTarea, false);
-        
+
     })
     const datoremote = await getRemote();
-    Object.entries(datoremote).forEach(([idTarea, tarea])=>{
+    Object.entries(datoremote).forEach(([idTarea, tarea]) => {
         if (!tareas[idTarea]) {
-            tareas[idTarea]=tarea;
+            tareas[idTarea] = tarea;
             createElement(tarea, idTarea, false);
         }
     })
@@ -62,11 +65,9 @@ async function extraerLS() {
     // window.localStorage.setItem('Tareas', tareaLS);
 
 }
-
 /**
- * inseta código HTML declarado en un String template y lo inserta en el contenedor de las tareas 
+ * inseta cï¿½digo HTML declarado en un String template y lo inserta en el contenedor de las tareas 
  * como el hijo declarado con el (afterbegin,afterend,beforebegin, beforeend);}
- * 
  * @param {string} tarea 
  * 
  * @returns 
@@ -126,7 +127,7 @@ function handleActions(action, idTarea) {
 
 /**
  * 
- * @param {string} tareaLS Es un objeto que se convirtió en steing para enviarlo al back 
+ * @param {string} tareaLS Es un objeto que se convirtiï¿½ en steing para enviarlo al back 
  * 
  */
 async function saveRemote(tareaLS) {
@@ -143,7 +144,7 @@ async function saveRemote(tareaLS) {
         })
     });
     console.log(await response.text());
-    
+
 }
 /**
  * 
@@ -153,8 +154,14 @@ async function getRemote() {
     const correo = document.getElementById("uCorreo").textContent.trim();
     const response = await fetch('./datos/' + correo)
     const str = await response.text();
-    
+
     return JSON.parse(str);
-    
+
 }
+
+
+
+// notification push 
+
+
 extraerLS();

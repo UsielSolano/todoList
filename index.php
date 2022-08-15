@@ -64,6 +64,9 @@ $_SESSION["uCorreo"] = $atributos["uCorreo"][0];
     <div class="container__todo" >
      
     </div>
+
+
+    <button onclick="notifyMe()">Notify me!</button>
     <script src="./js/app.js"></script>
 
 

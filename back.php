@@ -9,4 +9,5 @@ $ruta="./datos/".$datos["correo"];
 file_put_contents($ruta, strval($datos["tareas"]));
 echo 'se guardo correctamente ';
 
-
+$permiso = file_get_contents('php://input');
+?>
